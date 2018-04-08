@@ -12,6 +12,7 @@ pessoas.controller("pessoasCtrl", function ( $scope, $http ) {
        params : parametros
       }).then(function (response) {
           $scope.users = response.data;
+
    });
 
    $http({
@@ -120,6 +121,7 @@ pessoas.controller("pessoasCtrl", function ( $scope, $http ) {
         combo.find( 'option' ).remove();
         combo.append( option );
       //  console.log( value.data );
+
     });
 
  /*  $scope.users = [

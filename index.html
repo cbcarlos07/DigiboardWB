@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="pessoas">
-<head> 
+<head>
     <meta charset="UTF-8">
     <title>Digiboard</title>
     <script src="angular/angular.js"></script>
     <script src="js/app.js"></script>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap-chosen.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/ionicons.css" rel="stylesheet" type="text/css">
+    <link href="css/table/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
+
 
 </head>
 <body ng-controller="pessoasCtrl" >
@@ -213,7 +217,7 @@
            <a href="#" class="close"  ng-click="clearMessage()">&times;</a>
            <strong>Info!</strong> {{ message }}
        </div>
-       <table class="table table-hover table-responsive table-stripped" width="100%">
+       <table class="table table-hover table-responsive table-stripped" width="100%" id="table">
            <thead>
            <tr>
                <th>#</th>
@@ -243,9 +247,17 @@
            </tbody>
        </table>
    </div>
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/table/jquery.dataTables.min.js"></script>
+<script src="js/table/dataTables.bootstrap.min.js"></script>
+<script src="js/table/jquery.slimscroll.min.js"></script>
+<script src="js/table/fastclick.js"></script>
+
+
 <script src="js/chosen.jquery.js"></script>
+
 <script>
     $('.btn-novo').on('click', function () {
        $('#myModalNovo').modal('show');
@@ -332,6 +344,26 @@
             }
         })
     });
+
+    $( document ).ready( function () {
+        pagingTable();
+    } );
+
+    function pagingTable() {
+        $('#table').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : true,
+            'order': [[ 2, "desc" ]],
+            'info'        : true,
+            'autoWidth'   : false,
+            "pageLength": 10
+
+        });
+    }
+
+
 
 </script>
 </body>
