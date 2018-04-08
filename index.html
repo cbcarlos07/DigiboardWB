@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pessoas">
+<head>
+    <meta charset="UTF-8">
+    <title>Digiboard</title>
+    <script src="angular/angular.js"></script>
+    <script src="js/app.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-chosen.css" rel="stylesheet" type="text/css">
+
+</head>
+<body ng-controller="pessoasCtrl" >
+
+
+
+<!-- The Modal -->
+<div class="modal fade" id="myModalDelete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+               Deletar {{ clickedUser.nome }}?
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="deleteUser( clickedUser.cd_pessoa )">Sim</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">N&atilde;o</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal fade" id="myModalNovo">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form class="form-horizontal" >
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="nome">Nome</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="nome" placeholder="Nome" ng-model="newUser.nm_pessoa">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="telefone">Telefone</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="telefone"  placeholder="Telefone" ng-model="newUser.telefone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="empresa">Empresa</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="empresa" data-placeholder="Escolha a empresa" ng-model="newUser.empresa" >
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="setor">Setor</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="setor" data-placeholder="Escolha um setor" ng-model="newUser.setor"></select>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="email">E-mail</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="email" placeholder="Email" ng-model="newUser.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="cargo">Cargo</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="cargo" data-placeholder="Escolha um setor" ng-model="newUser.cargo"></select>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default btn-save" ng-click="saveUser(  )" data-dismiss="modal">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- The Modal -->
+<div class="modal fade" id="myModalEdit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Alterar Cadastro</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form class="form-horizontal" >
+                    <input type="text" id="cod_pessoa" placeholder="codigo" ng-model="clickedUser.cd_pessoa" width="1">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="nome">Nome</label>
+                        <div class="col-sm-10">
+
+                            <input type="text" class="form-control" id="name" placeholder="Nome" ng-model="clickedUser.nm_pessoa">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="telefone">Telefone</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="phone" placeholder="Telefone" ng-model="clickedUser.telefone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="empresa">Empresa</label>
+                        <div class="col-sm-10">
+
+                            <select class="form-control" id="empresas" data-placeholder="Escolha a empresa" ng-model="clickedUser.empresa" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="empresa">Empresa</label>
+                        <div class="col-sm-10">
+
+                            <select class="form-control" id="empresass" data-placeholder="Escolha a empresa" >
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="setors">Setor</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="setors" data-placeholder="Escolha um setor" ng-model="clickedUser.setor"></select>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="email">E-mail</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="mail" placeholder="Email" ng-model="clickedUser.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="cargo">Cargo</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="cargos" data-placeholder="Escolha um setor" ng-model="clickedUser.cargo"></select>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default btn-edit"  data-dismiss="modal">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-expand-sm bg-light">
+
+
+
+</nav>
+   <a href="#" class="btn btn-success btn-novo">Novo</a>
+   <div class="container" >
+       <div class="alert alert-info" ng-if="message">
+           <a href="#" class="close"  ng-click="clearMessage()">&times;</a>
+           <strong>Info!</strong> {{ message }}
+       </div>
+       <table class="table table-hover table-responsive table-stripped" width="100%">
+           <thead>
+           <tr>
+               <th>#</th>
+               <th>Nome</th>
+               <th>Telefone</th>
+               <th>Empresa</th>
+               <th>Setor</th>
+               <th>E-mail</th>
+               <th>Cargo</th>
+               <th></th>
+           </tr>
+           </thead>
+           <tbody>
+           <tr ng-repeat="user in users" >
+               <td>{{ user.cd_pessoa }}</td>
+               <td>{{ user.nm_pessoa }}</td>
+               <td>{{ user.telefone }}</td>
+               <td>{{ user.empresa.nm_empresa }}</td>
+               <td>{{ user.setor.nm_setor }}</td>
+               <td>{{ user.email }}</td>
+               <td>{{ user.cargo.ds_cargo}}</td>
+               <td>
+                   <button  class="btn btn-warning btn-edit" data-toggle="modal" data-target="#myModalEdit" ng-click="selectUser( user )">Alterar</button>
+                   <button href="#" class="btn btn-danger btn-excluir" data-toggle="modal" data-target="#myModalDelete" ng-click="selectUser( user )">Excluir</button>
+               </td>
+           </tr>
+           </tbody>
+       </table>
+   </div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/chosen.jquery.js"></script>
+<script>
+    $('.btn-novo').on('click', function () {
+       $('#myModalNovo').modal('show');
+    });
+
+    $('#myModalNovo').on('shown.bs.modal', function () {
+        $('#empresa').chosen({
+            allow_single_deselect : true
+        })
+        $('#setor').chosen({
+            allow_single_deselect : true
+        })
+
+        $('#cargo').chosen({
+            allow_single_deselect : true
+        })
+    });
+
+    $('#myModalEdit').on('shown.bs.modal', function () {
+        $('#empresas').chosen({
+            allow_single_deselect : true
+        })
+        $('#setors').chosen({
+            allow_single_deselect : true
+        })
+
+        $('#cargos').chosen({
+            allow_single_deselect : true
+        })
+    });
+
+    $('.btn-save').on('click', function () {
+        var nome      = $('#nome').val();
+        var telefone  = $('#telefone').val();
+        var empresa   = $('#empresa').val();
+        var setor     = $('#setor').val();
+        var email     = $('#email').val();
+        var cargo     = $('#cargo').val();
+        $.ajax({
+            url : 'http://localhost/controle/api/pessoa/add',
+            type : 'post',
+            dataType : 'json',
+            data : {
+                nome      : nome,
+                telefone  : telefone,
+                empresa   : empresa,
+                setor     : setor,
+                email     : email,
+                cargo     : cargo
+            },
+            success : function (data) {
+                console.log( data );
+                location.reload();
+            }
+        })
+    });
+
+    $('.btn-edit').on('click', function () {
+
+        var codigo      = $('#cod_pessoa').val();
+
+        var nome      = $('#name').val();
+        var telefone  = $('#phone').val();
+        var empresa   = $('#empresas').val();
+        var setor     = $('#setors').val();
+        var email     = $('#mail').val();
+        var cargo     = $('#cargos').val();
+        console.log( "Codigo: "+codigo );
+        $.ajax({
+            url : 'http://localhost/controle/api/pessoa/edit',
+            type : 'post',
+            dataType : 'json',
+            data : {
+                codigo    : codigo,
+                nome      : nome,
+                telefone  : telefone,
+                empresa   : empresa,
+                setor     : setor,
+                email     : email,
+                cargo     : cargo
+            },
+            success : function (data) {
+                console.log( data );
+            }
+        })
+    });
+
+</script>
+</body>
+</html>
