@@ -1,6 +1,6 @@
 var pessoas = angular.module("pessoas", []);
 pessoas.controller("pessoasCtrl", function ( $scope, $http ) {
-   console.log( "In my appcontroller" );
+  // console.log( "In my appcontroller" );
 
    $scope.newUser = {};
    $scope.clickedUser = {};

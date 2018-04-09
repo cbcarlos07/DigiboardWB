@@ -205,7 +205,12 @@
 
 
 </nav>
-   <a href="#" class="btn btn-success btn-novo" style="float: right; margin-right: 100px">Novo</a>
+   <div class="btn-group" style="float: right; margin-right: 150px;">
+       <a href="#" class="btn btn-success btn-novo" >Novo</a>
+       <a href="#" class="btn btn-primary btn-cargo" >Cargos</a>
+   </div>
+
+<div class="row"></div>
    <div class="container" >
        <div class="alert alert-info" ng-if="message">
            <a href="#" class="close"  ng-click="clearMessage()">&times;</a>
@@ -444,6 +449,10 @@
 
         });
     }
+
+    $('.btn-cargo').on('click', function () {
+        location.href = "total.html";
+    });
 
 
 
