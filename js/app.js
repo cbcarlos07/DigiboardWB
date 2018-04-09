@@ -170,5 +170,69 @@ pessoas.controller("pessoasCtrl", function ( $scope, $http ) {
 
    $scope.clearMessage = function () {
        $scope.message = "";
+   };
+
+   $('#fnome').on('change', function () {
+        pesquisa : pesquisa();
+   });
+
+    $('#ffone').on('change', function () {
+        pesquisa : pesquisa();
+    });
+
+    $('#fempresa').on('change', function () {
+        pesquisa : pesquisa();
+    });
+
+    $('#fsetor').on('change', function () {
+        pesquisa : pesquisa();
+    });
+
+    $('#femail').on('change', function () {
+        pesquisa : pesquisa();
+    });
+
+    $('#fcargo').on('change', function () {
+        pesquisa : pesquisa();
+    });
+
+   function pesquisa() {
+       var nome    = $('#fnome').val();
+       var fone    = $('#ffone').val();
+       var empresa = $('#fempresa').val();
+       var setor   = $('#fsetor').val();
+       var email   = $('#femail').val();
+       var cargo   = $('#fcargo').val();
+       var param   = { 'nome': nome, 'telefone' : fone, 'empresa' : empresa, 'email' : empresa, 'setor' : setor, 'email' : email, 'cargo' : cargo };
+       $http({
+           method : 'POST',
+           url    :  'http://localhost/controle/api/pessoa',
+           params : param
+       }).then(function (response) {
+           $scope.users = response.data;
+
+       });
    }
+
+   $('.btn-pesq').on('click', function () {
+      pesquisa : pesquisarNome();
+   });
+
+    function pesquisarNome() {
+        var nome = $('#pnome').val();
+        if( nome == "" ){
+            nome = '%';
+        }
+        var parametros = { "nome" : nome };
+        $http({
+            method : 'POST',
+            url    :  'http://localhost/controle/api/pessoa/nome',
+            params : parametros
+        }).then(function (response) {
+            $scope.users = response.data;
+
+        });
+    }
+
+
 });

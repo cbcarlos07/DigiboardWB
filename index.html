@@ -223,30 +223,42 @@
            <div class="panel-body">
                <div class="form-group col-lg-2">
                    <label for="fnome">Nme</label>
-                   <select class="form-control" data-placeholder="Escolha o nome" id="fnome"></select>
+                   <select class="form-control" data-placeholder="Escolha o nome" id="fnome">
+                       <option value="%"></option>
+                   </select>
                </div>
 
                <div class="form-group col-lg-2">
                    <label for="ffone">Telefone</label>
-                   <select class="form-control" data-placeholder="Escolha o telefone" id="ffone"></select>
+                   <select class="form-control" data-placeholder="Escolha o telefone" id="ffone">
+                       <option value="%"></option>
+                   </select>
                </div>
 
                <div class="form-group col-lg-2">
                    <label for="fempresa">Empresa</label>
-                   <select class="form-control" data-placeholder="Escolha a empresa" id="fempresa"></select>
+                   <select class="form-control" data-placeholder="Escolha a empresa" id="fempresa">
+                       <option value="%"></option>
+                   </select>
                </div>
 
                <div class="form-group col-lg-2">
                    <label for="fsetor">Setor</label>
-                   <select class="form-control" data-placeholder="Escolha o setor" id="fsetor"></select>
+                   <select class="form-control" data-placeholder="Escolha o setor" id="fsetor">
+                       <option value="%"></option>
+                   </select>
                </div>
                <div class="form-group col-lg-2">
                    <label for="femail">E-mail</label>
-                   <select class="form-control" data-placeholder="Escolha o e-mail" id="femail"></select>
+                   <select class="form-control" data-placeholder="Escolha o e-mail" id="femail">
+                       <option value="%"></option>
+                   </select>
                </div>
                <div class="form-group col-lg-2">
                    <label for="fcargo">Cargo</label>
-                   <select class="form-control" data-placeholder="Escolha o cargo" id="fcargo"></select>
+                   <select class="form-control" data-placeholder="Escolha o cargo" id="fcargo">
+                       <option value="%"></option>
+                   </select>
                </div>
 
                <div class="form-group col-lg-5">
@@ -270,7 +282,7 @@
                <th>Empresa</th>
                <th>Setor</th>
                <th>E-mail</th>
-               <th>Cargo</th>
+               <th>Cargo</th>empresa
                <th></th>
            </tr>
            </thead>
@@ -299,7 +311,7 @@
 <script src="js/table/dataTables.bootstrap.min.js"></script>
 <script src="js/table/jquery.slimscroll.min.js"></script>
 <script src="js/table/fastclick.js"></script>
-<script src="js/table/fastclick.js"></script>
+<script src="js/filtro.js"></script>
 
 
 <script>
@@ -312,9 +324,9 @@
     });
 
 
-    $('#ffone').chosen({
-        allow_single_deselect : true
-    });
+
+
+
 
     $('#fempresa').chosen({
         allow_single_deselect : true
