@@ -155,3 +155,119 @@ function preencherComboCargo(){
         }
     });
 }
+
+function validarCampo() {
+
+    var nome = $('#nome');
+    var fone = $('#telefone');
+    var empresa = $('#empresa');
+    var setor   = $('#setor');
+    var email   = $('#email');
+    var cargo   = $('#cargo');
+    var retorno = true;
+    if( (nome.val( ) == "" ) || ( fone.val() == "" ) || ( empresa.val() == "%" ) ||
+        (setor.val() == "%") || ( email.val() == "" ) || (cargo.val() == "%")
+    ){
+        retorno = false;
+        if(nome.val( ) == "" ){
+            nome.css( 'border-color', 'red' );
+        }
+
+        if(fone.val( ) == "" ){
+            fone.css( 'border-color', 'red' );
+        }
+        if(empresa.val( ) == "%" ){
+            empresa.css( 'border-color', 'red' );
+        }
+        if(setor.val( ) == "%" ){
+            setor.css( 'border-color', 'red' );
+        }
+        if(email.val( ) == "" ){
+            email.css( 'border-color', 'red' );
+        }
+        if(cargo.val( ) == "%" ){
+            cargo.css( 'border-color', 'red' );
+        }
+    }
+
+    return retorno;
+
+}
+
+
+function validarCampo() {
+
+    var nome = $('#nome');
+    var fone = $('#telefone');
+    var empresa = $('#empresa');
+    var setor   = $('#setor');
+    var email   = $('#email');
+    var cargo   = $('#cargo');
+    var retorno = true;
+    if( (nome.val( ) == "" ) || ( fone.val() == "" ) || ( empresa.val() == "%" ) ||
+        (setor.val() == "%") || ( email.val() == "" ) || (cargo.val() == "%")
+    ){
+        retorno = false;
+        if(nome.val( ) == "" ){
+            nome.css( 'border-color', 'red' );
+        }
+
+        if(fone.val( ) == "" ){
+            fone.css( 'border-color', 'red' );
+        }
+        if(empresa.val( ) == "%" ){
+            empresa.css( 'border-color', 'red' );
+        }
+        if(setor.val( ) == "%" ){
+            setor.css( 'border-color', 'red' );
+        }
+        if(email.val( ) == "" ){
+            email.css( 'border-color', 'red' );
+        }
+        if(cargo.val( ) == "%" ){
+            cargo.css( 'border-color', 'red' );
+        }
+    }
+
+    return retorno;
+
+}
+
+
+function validarCampos() {
+
+    var nome = $('#name');
+    var fone = $('#phone');
+    var empresa = $('#empresas');
+    var setor   = $('#setors');
+    var email   = $('#mail');
+    var cargo   = $('#cargos');
+    var retorno = true;
+    if( (nome.val( ) == "" ) || ( fone.val() == "" ) || ( empresa.val() == "%" ) ||
+        (setor.val() == "%") || ( email.val() == "" ) || (cargo.val() == "%")
+    ){
+        retorno = false;
+        if(nome.val( ) == "" ){
+            nome.css( 'border-color', 'red' );
+        }
+
+        if(fone.val( ) == "" ){
+            fone.css( 'border-color', 'red' );
+        }
+        if(empresa.val( ) == "%" ){
+            empresa.css( 'border-color', 'red' );
+        }
+        if(setor.val( ) == "%" ){
+            setor.css( 'border-color', 'red' );
+        }
+        if(email.val( ) == "" ){
+            email.css( 'border-color', 'red' );
+        }
+        if(cargo.val( ) == "%" ){
+            cargo.css( 'border-color', 'red' );
+        }
+    }
+
+    return retorno;
+
+}

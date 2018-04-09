@@ -214,7 +214,12 @@ pessoas.controller("pessoasCtrl", function ( $scope, $http ) {
        });
    }
 
-   $('.btn-pesq').on('click', function () {
+    $('#pnome').on('keyup', function () {
+        if( $(this).val().length > 3 )
+            pesquisa : pesquisarNome();
+    });
+
+    $('.btn-pesq').on('click', function () {
       pesquisa : pesquisarNome();
    });
 
