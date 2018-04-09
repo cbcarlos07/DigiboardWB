@@ -149,10 +149,10 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="empresa">Empresa</label>
+                        <label class="control-label col-sm-2" for="empresas">Empresa</label>
                         <div class="col-sm-10">
 
-                            <select class="form-control" id="empresas" data-placeholder="Escolha a empresa" ng-model="clickedUser.empresa" >
+                            <select class="form-control" id="empresas" data-placeholder="Escolha a empresa" ng-model="clickedUser.empresa" ></select>
                         </div>
                     </div>
 
@@ -160,7 +160,7 @@
                         <label class="control-label col-sm-2" for="empresa">Empresa</label>
                         <div class="col-sm-10">
 
-                            <select class="form-control" id="empresass" data-placeholder="Escolha a empresa" >
+                            <select class="form-control" id="empresass" data-placeholder="Escolha a empresa" ></select>
                         </div>
                     </div>
 
@@ -212,11 +212,55 @@
 
 </nav>
    <a href="#" class="btn btn-success btn-novo" style="float: right; margin-right: 100px">Novo</a>
-   <div class="container" >
+   <div class="container" style="margin-top: 2px">
        <div class="alert alert-info" ng-if="message">
            <a href="#" class="close"  ng-click="clearMessage()">&times;</a>
            <strong>Info!</strong> {{ message }}
        </div>
+
+       <div class="panel panel-default ">
+           <div class="panel-heading">Opçoes de Filtros</div>
+           <div class="panel-body">
+               <div class="form-group col-lg-2">
+                   <label for="fnome">Nme</label>
+                   <select class="form-control" data-placeholder="Escolha o nome" id="fnome"></select>
+               </div>
+
+               <div class="form-group col-lg-2">
+                   <label for="ffone">Telefone</label>
+                   <select class="form-control" data-placeholder="Escolha o telefone" id="ffone"></select>
+               </div>
+
+               <div class="form-group col-lg-2">
+                   <label for="fempresa">Empresa</label>
+                   <select class="form-control" data-placeholder="Escolha a empresa" id="fempresa"></select>
+               </div>
+
+               <div class="form-group col-lg-2">
+                   <label for="fsetor">Setor</label>
+                   <select class="form-control" data-placeholder="Escolha o setor" id="fsetor"></select>
+               </div>
+               <div class="form-group col-lg-2">
+                   <label for="femail">E-mail</label>
+                   <select class="form-control" data-placeholder="Escolha o e-mail" id="femail"></select>
+               </div>
+               <div class="form-group col-lg-2">
+                   <label for="fcargo">Cargo</label>
+                   <select class="form-control" data-placeholder="Escolha o cargo" id="fcargo"></select>
+               </div>
+
+               <div class="form-group col-lg-5">
+                   <label for="pnome">Pesquisa por nome</label>
+                   <input class="form-control" id="pnome" >
+               </div>
+
+               <div class="col-lg-3">
+                   <a href="#" class="btn btn-primary btn-pesq" style="margin-top: 20px">Pesquisar</a>
+               </div>
+
+           </div>
+       </div>
+
        <table class="table table-hover table-responsive table-stripped" width="100%" id="table">
            <thead>
            <tr>
@@ -250,23 +294,49 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/chosen.jquery.js"></script>
 <script src="js/table/jquery.dataTables.min.js"></script>
 <script src="js/table/dataTables.bootstrap.min.js"></script>
 <script src="js/table/jquery.slimscroll.min.js"></script>
 <script src="js/table/fastclick.js"></script>
+<script src="js/table/fastclick.js"></script>
 
-
-<script src="js/chosen.jquery.js"></script>
 
 <script>
     $('.btn-novo').on('click', function () {
        $('#myModalNovo').modal('show');
     });
 
+    $('#fnome').chosen({
+        allow_single_deselect : true
+    });
+
+
+    $('#ffone').chosen({
+        allow_single_deselect : true
+    });
+
+    $('#fempresa').chosen({
+        allow_single_deselect : true
+    });
+    $('#fsetor').chosen({
+        allow_single_deselect : true
+    });
+    $('#femail').chosen({
+        allow_single_deselect : true
+    });
+    $('#fcargo').chosen({
+        allow_single_deselect : true
+    });
+
+
+
+
+
     $('#myModalNovo').on('shown.bs.modal', function () {
         $('#empresa').chosen({
             allow_single_deselect : true
-        })
+        });
         $('#setor').chosen({
             allow_single_deselect : true
         })
